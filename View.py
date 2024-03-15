@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import tkinter.font as font
 from tkinter import filedialog
+from tkinter import messagebox
 
 
 class View(Tk):
@@ -75,7 +76,6 @@ class View(Tk):
         return txt_box
 
     def create_buttons(self):
-        # TODO put commands into the buttons
         send = Button(self.__top_frame, text="Otsi", font=self.__regular_font, state=DISABLED, command=lambda:self.__controller.search_click(self.__char_input.get()))
         file_selection = Button(self.__top_frame, text="Fail", font=self.__regular_font, command=self.__controller.file_ask)
 
@@ -89,16 +89,15 @@ class View(Tk):
         notifications = Label(self.__top_frame, text="Valige fail", font=self.__regular_font, bg="#ffe5c5", fg="red")
 
         info.grid(row=0, column=0, padx=5, pady=2, sticky=EW)
-        notifications.place(x=290, y=1)
+        notifications.place(x=290, y=2.5)
 
         return info, notifications
 
     @staticmethod
     def show_folder():
         initial_dir = "C:/Users/Ralf Markus.Pärn/Documents/Python Projects/Faili_lugeja/failid"
-        file_path = filedialog.askopenfilename(title="Select a File", filetypes=[("All files", "*.*")], initialdir=initial_dir)
-
-        #print(file_path)
+        file_path = filedialog.askopenfilename(title="Select a File",
+                                               filetypes=[("All files", "*.*")], initialdir=initial_dir)
         return file_path
 
     def generate_table(self, data):
@@ -187,6 +186,5 @@ class View(Tk):
 
         return my_table
 
-    def create_messagebox(self):
-        pass
-
+    def create_messagebox(self, title, message):
+        messagebox.showinfo(title, message)
