@@ -186,3 +186,7 @@ class View(Tk):
         my_table.pack(fill="both", expand=True)
 
         return my_table
+
+    def create_messagebox(self):
+        pass
+
